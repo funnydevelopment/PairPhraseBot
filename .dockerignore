@@ -1,0 +1,14 @@
+*.csv
+*.pyo
+*.pyc
+*.env
+
+README.md
+.gitignore
+.editorconfig
+.pre-commit-config.yaml
+Dockerfile
+
+__pycache__
+venv
+.idea
