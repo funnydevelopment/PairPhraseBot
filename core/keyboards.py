@@ -11,3 +11,16 @@ def make_main_menu_kb():
         resize_keyboard=True,
     )
     return keyboard
+
+
+def make_accept_decline_kb():
+    kb = [
+        [types.KeyboardButton(text="Введенные данные корректны")],
+        [types.KeyboardButton(text="Ввести данные заново")],
+        [types.KeyboardButton(text="Отменить перевод")],
+    ]
+    keyboard = types.ReplyKeyboardMarkup(
+        keyboard=kb,
+        resize_keyboard=True,
+    )
+    return keyboard
