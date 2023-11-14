@@ -49,9 +49,8 @@ async def help_command(message: types.Message, state: FSMContext):
 @router.message(F.text.lower() == "предложить перевод")
 async def start_getting_words(message: types.Message, state: FSMContext):
     await message.answer(
-        text=texts.FIRST_WORD_TEXT, reply_markup=types.ReplyKeyboardRemove()
+        text=texts.CHOOSE_LANGUAGE_TEXT, reply_markup=kb.make_choose_language_kb()
     )
-    await state.set_state(state=PhraseBotState.first_word)
 
 
 @router.message(F.text.lower() == "введенные данные корректны")
@@ -101,6 +100,24 @@ async def get_second_word(message: types.Message, state: FSMContext):
     else:
         await message.answer(text=texts.NOT_VALID_TEXT)
         await state.set_state(state=PhraseBotState.second_word)
+
+
+@router.message(F.text.lower() == "ввести русское слово")
+async def choose_russian_language(message: types.Message, state: FSMContext):
+    await message.answer(
+        text=texts.RUSSIAN_LANGUAGE_TEXT, reply_markup=types.ReplyKeyboardRemove()
+    )
+    await state.update_data(first_word_language="rus")
+    await state.set_state(state=PhraseBotState.first_word)
+
+
+@router.message(F.text.lower() == "ввести тувинское слово")
+async def choose_russian_language(message: types.Message, state: FSMContext):
+    await message.answer(
+        text=texts.TUVAN_LANGUAGE_TEXT, reply_markup=types.ReplyKeyboardRemove()
+    )
+    await state.update_data(first_word_language="tuv")
+    await state.set_state(state=PhraseBotState.first_word)
 
 
 @router.message(PhraseBotState.input_name)
