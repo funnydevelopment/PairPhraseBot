@@ -105,11 +105,15 @@ async def get_second_word(message: types.Message, state: FSMContext):
 
 @router.message(PhraseBotState.input_name)
 async def get_user_name(message: types.Message, state: FSMContext):
-    is_valid_word = await utils.is_cyrillic_with_hyphen_string(message.text)
-    if is_valid_word:
-        await state.update_data(user_name=message.text, user_id=message.from_user.id)
-        await state.set_state(PhraseBotState.accept_state)
-        await get_all_data(message, state)
-    else:
-        await message.answer(text=texts.NOT_VALID_TEXT)
-        await state.set_state(state=PhraseBotState.input_name)
+    await state.update_data(user_name=message.text, user_id=message.from_user.id)
+    await state.set_state(PhraseBotState.accept_state)
+    await get_all_data(message, state)
+
+
+@router.message()
+async def handle_no_state(message: types.Message, state: FSMContext):
+    await message.answer(
+        text='Нажмите кнопку "Предложить перевод" или "Инструкция"',
+        reply_markup=kb.make_main_menu_kb(),
+    )
+    await state.set_state(PhraseBotState.main_state)
