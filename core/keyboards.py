@@ -24,3 +24,15 @@ def make_accept_decline_kb():
         resize_keyboard=True,
     )
     return keyboard
+
+
+def make_choose_language_kb():
+    kb = [
+        [types.KeyboardButton(text="Ввести русское слово")],
+        [types.KeyboardButton(text="Ввести тувинское слово")],
+    ]
+    keyboard = types.ReplyKeyboardMarkup(
+        keyboard=kb,
+        resize_keyboard=True,
+    )
+    return keyboard
