@@ -16,8 +16,17 @@ logger = logging.getLogger(__name__)
 
 async def get_all_data(message: types.Message, state: FSMContext):
     data = await state.get_data()
+    first_language_text, second_language_text = "", ""
+    if data["first_word_language"] == "rus":
+        first_language_text += "Предложенное слово на русском"
+        second_language_text += "Перевод предложенного слова на тувинском"
+    else:
+        first_language_text += "Предложенное слово на тувинском"
+        second_language_text += "Перевод предложенного слова на русском"
     await message.answer(
         text=texts.ALL_USER_DATA_TEXT.format(
+            first_language_text=first_language_text,
+            second_language_text=second_language_text,
             first_word=data["first_word"],
             second_word=data["second_word"],
             user_name=data["user_name"],
