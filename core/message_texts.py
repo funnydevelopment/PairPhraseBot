@@ -19,8 +19,8 @@ NAME_INPUT_TEXT = "Спасибо, теперь отправьте Ваше им
 
 ALL_USER_DATA_TEXT = (
     "Ваше имя сохранено, проверьте введенные данные.\n"
-    "Первое слово: <b><i>{first_word}</i></b>;\n"
-    "Второе слово: <b><i>{second_word}</i></b>;\n"
+    "{first_language_text}: <b><i>{first_word}</i></b>;\n"
+    "{second_language_text}: <b><i>{second_word}</i></b>;\n"
     "Ваше имя: <b><i>{user_name}</i></b>\n"
 )
 
