@@ -18,11 +18,11 @@ async def get_all_data(message: types.Message, state: FSMContext):
     data = await state.get_data()
     first_language_text, second_language_text = "", ""
     if data["first_word_language"] == "rus":
-        first_language_text += "Предложенное слово на русском"
-        second_language_text += "Перевод предложенного слова на тувинском"
+        first_language_text += texts.RUSSIAN_TEXT
+        second_language_text += texts.TUVAN_TEXT
     else:
-        first_language_text += "Предложенное слово на тувинском"
-        second_language_text += "Перевод предложенного слова на русском"
+        first_language_text += texts.TUVAN_TEXT
+        second_language_text += texts.RUSSIAN_TEXT
     await message.answer(
         text=texts.ALL_USER_DATA_TEXT.format(
             first_language_text=first_language_text,
