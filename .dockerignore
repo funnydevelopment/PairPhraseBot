@@ -7,7 +7,7 @@ README.md
 .gitignore
 .editorconfig
 .pre-commit-config.yaml
-Dockerfile
+tg_bot/Dockerfile
 
 __pycache__
 venv
