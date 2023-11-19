@@ -1,6 +1,6 @@
 from aiogram import Bot, Dispatcher
 
-from config.config import Config, load_config
+from tg_bot.config.config import Config, load_config
 
 
 config: Config = load_config(".env")
