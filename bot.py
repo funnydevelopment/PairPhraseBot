@@ -1,7 +1,7 @@
 import asyncio
 import logging
 
-from create_bot import bot, dp
+from config.create_bot import bot, dp
 from core.handlers import router
 
 
