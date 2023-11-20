@@ -55,6 +55,16 @@ async def help_command(message: types.Message, state: FSMContext):
     await state.set_state(state=PhraseBotState.main_state)
 
 
+@router.message(F.text.lower() == "статистика")
+async def get_user_stat(message: types.Message, state: FSMContext):
+    # todo: через новый сервис и получить с бэкенда статистику
+    fullname = message.from_user.full_name
+    await message.answer(
+        text=texts.USER_STAT_TEXT.format(user_name=fullname, count=None)
+    )
+    await state.set_state(PhraseBotState.main_state)
+
+
 @router.message(F.text.lower() == "предложить перевод")
 async def start_getting_words(message: types.Message, state: FSMContext):
     await message.answer(
@@ -139,7 +149,7 @@ async def get_user_name(message: types.Message, state: FSMContext):
 @router.message()
 async def handle_no_state(message: types.Message, state: FSMContext):
     await message.answer(
-        text='Нажмите кнопку "Предложить перевод" или "Инструкция"',
+        text=texts.NO_HANDLE_STATE_TEXT,
         reply_markup=kb.make_main_menu_kb(),
     )
     await state.set_state(PhraseBotState.main_state)
