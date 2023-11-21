@@ -25,7 +25,7 @@ and navigate to the project folder.
 
 - Create a Python virtual environment: 
 ```
-python -m venv venv
+python3 -m venv venv
 ```
 
 - Activate the virtual environment:
@@ -46,5 +46,5 @@ pip install -r requirements.txt
 ```
 - Run the project:
 ```
-python bot.py
+python3 bot.py
 ```
