@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import Mapped, mapped_column
 
 from .database import Base
 
@@ -6,26 +6,26 @@ from .database import Base
 class Translates(Base):
     __tablename__ = "translates"
 
-    id = Column(Integer, primary_key=True)
-    tyvan_word = Column(String, nullable=False)
-    russian_word = Column(String, nullable=False)
-    telegram_id = Column(Integer, nullable=False)
-    telegram_full_name = Column(String, nullable=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    tyvan_word: Mapped[str] = mapped_column(nullable=False)
+    russian_word: Mapped[str] = mapped_column(nullable=False)
+    telegram_id: Mapped[int] = mapped_column(nullable=False)
+    telegram_full_name: Mapped[str] = mapped_column(nullable=True)
 
 
 class PreviousTranslates(Base):
     __tablename__ = "previous_translates"
 
-    id = Column(Integer, primary_key=True)
-    row_id = Column(Integer, nullable=True)
-    ind = Column(Integer, nullable=True)
-    tyv = Column(String, nullable=True)
-    ru = Column(String, nullable=True)
-    split = Column(String, nullable=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    row_id: Mapped[int] = mapped_column(nullable=True)
+    ind: Mapped[int] = mapped_column(nullable=True)
+    tyv: Mapped[str] = mapped_column(nullable=True)
+    ru: Mapped[str] = mapped_column(nullable=True)
+    split: Mapped[str] = mapped_column(nullable=True)
 
 
 class MissingWords(Base):
     __tablename__ = "missing_words"
 
-    id = Column(Integer, primary_key=True)
-    word = Column(String, nullable=False)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    word: Mapped[str] = mapped_column(nullable=False)
