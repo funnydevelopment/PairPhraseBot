@@ -17,8 +17,8 @@ class PreviousTranslates(Base):
     __tablename__ = "previous_translates"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    row_id: Mapped[int] = mapped_column(nullable=True)
-    ind: Mapped[int] = mapped_column(nullable=True)
+    row_id: Mapped[str] = mapped_column(nullable=True)
+    ind: Mapped[str] = mapped_column(nullable=True)
     tyv: Mapped[str] = mapped_column(nullable=True)
     ru: Mapped[str] = mapped_column(nullable=True)
     split: Mapped[str] = mapped_column(nullable=True)
