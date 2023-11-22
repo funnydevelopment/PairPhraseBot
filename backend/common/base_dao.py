@@ -1,6 +1,6 @@
 from backend.database.database import async_session_maker
 
-from sqlalchemy import select, insert
+from sqlalchemy import select, insert, func
 
 
 class BaseDAO:
@@ -28,8 +28,8 @@ class BaseDAO:
             await session.commit()
 
     @classmethod
-    async def count(cls, **filter_by):
+    async def count(cls, label_name):
         async with async_session_maker() as session:
-            query = select(cls).filter_by(**filter_by)
+            query = select(func.count(cls.model.id).label(label_name))
             result = await session.execute(query)
             return result.scalar()
