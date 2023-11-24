@@ -7,9 +7,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from backend.database.database import Base
-from backend.database.models import PreviousTranslates, Translates, MissingWords
-from backend.database.config import settings
+from backend.src.tgBot import Base
+from backend.src.config import settings
 
 sys.path.insert(0, dirname(dirname(dirname(abspath(__file__)))))
 
